@@ -1,0 +1,1 @@
+# tablets-prioducer-service
