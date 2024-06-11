@@ -1,0 +1,49 @@
+server:
+    port: 9090
+    address: localhost
+
+spring:
+    data:
+        cassandra:
+            port: 9942
+            keyspace-name: SSD.TABLETS
+            contact-points: 10.254.5.1, 10.254.5.2, 10.254.5.3
+            local-datacenter: datacenter1
+            schema-action: CREATE_IF_NOT_EXISTS
+
+            request:
+                timeout: 10s
+                consistency: quorum
+
+            connection:
+                connect-timeout: 10s
+                init-query-timeout: 10s
+
+    rsocket:
+        server:
+            port: 6060
+            address: localhost
+
+variables:
+    KAFKA_BROKER: 10.254.1.209:9092, 10.254.1.211:9092, 10.254.1.212:9092
+    GROUP_ID_FOR_KAFKA: SSD.GPS.TABLETS_dev
+
+    SOS_TOPIC: sos_topic
+    ACTIVE_TASK: active_task_dev
+    NOTIFICATION: notification_dev
+    CAR_TOTAL_DATA: car_total_data_dev
+    SOS_TOPIC_FOR_ANDROID_NOTIFICATION: SOS_TOPIC_FOR_ANDROID_NOTIFICATION
+
+    CASSANDRA_PORT: 9942
+    CASSANDRA_HOST: 10.254.5.1, 10.254.5.2, 10.254.5.3
+
+    CASSANDRA_MAX_REQ: 1000
+
+    CASSANDRA_MAX_CONN_LOCAL: 10
+    CASSANDRA_MAX_CONN_REMOTE: 4
+
+    CASSANDRA_CORE_CONN_LOCAL: 4
+    CASSANDRA_CORE_CONN_REMOTE: 2
+
+    ADDRESS_LOCATION_API : http://ms-dev.ssd.uz/nominatim/search?q=
+    CHAT_SERVICE_PREFIX: chat
