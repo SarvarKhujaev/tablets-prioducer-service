@@ -78,10 +78,10 @@ public class DataValidateInspector extends LogInspector {
     }
 
     /*
-        получает в параметрах название параметра из файла application.yaml
-        проверят что context внутри main класса GpsTabletsServiceApplication  инициализирован
-        и среди параметров сервиса сузествует переданный параметр
-        */
+    получает в параметрах название параметра из файла application.yaml
+    проверят что context внутри main класса GpsTabletsServiceApplication  инициализирован
+    и среди параметров сервиса сузествует переданный параметр
+    */
     protected final synchronized <T> T checkContextOrReturnDefaultValue (
             final String paramName,
             final T defaultValue

@@ -1,6 +1,6 @@
 package com.example.tabletsproducerservice;
 
-import com.example.tabletsproducerservice.database.KafkaDataControl;
+import com.example.tabletsproducerservice.kafkaDataSet.KafkaDataControl;
 import junit.framework.TestCase;
 
 public final class KafkaConnectionTest extends TestCase {
