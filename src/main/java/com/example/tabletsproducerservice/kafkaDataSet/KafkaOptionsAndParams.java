@@ -3,7 +3,7 @@ package com.example.tabletsproducerservice.kafkaDataSet;
 import com.example.tabletsproducerservice.constants.Errors;
 import com.example.tabletsproducerservice.inspectors.DataValidateInspector;
 
-public sealed class KafkaOptionsAndParams extends DataValidateInspector permits KafkaDataControl {
+public sealed class KafkaOptionsAndParams extends DataValidateInspector permits KafkaMetrics {
     protected final String KAFKA_ACKS_CONFIG = checkContextOrReturnDefaultValue(
             "variables.KAFKA_VARIABLES.KAFKA_ACKS_CONFIG",
             KafkaOptionsAndParams.class.getDeclaredFields()[1].getName()

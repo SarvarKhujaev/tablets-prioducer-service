@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 import com.google.gson.Gson;
 import java.util.*;
 
-public final class KafkaDataControl extends KafkaOptionsAndParams implements ServiceCommonMethods {
+public final class KafkaDataControl extends KafkaMetrics implements ServiceCommonMethods {
     private final Gson gson = new Gson();
     private static KafkaDataControl INSTANCE = new KafkaDataControl();
 
@@ -141,6 +141,7 @@ public final class KafkaDataControl extends KafkaOptionsAndParams implements Ser
 
     @Override
     public void close() {
+        super.collectMetrics( this.kafkaProducer );
         this.kafkaProducer.flush();
         this.kafkaProducer.close();
         this.kafkaSender.close();
