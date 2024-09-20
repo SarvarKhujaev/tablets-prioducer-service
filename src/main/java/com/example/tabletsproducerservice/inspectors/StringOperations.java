@@ -9,20 +9,23 @@ import java.util.UUID;
 public class StringOperations extends CollectionsInspector {
     protected StringOperations() {}
 
+    public final static String EMPTY = "";
+    protected final static String SPACE = " ";
+
     protected final synchronized String concatNames (
             final PatrulFIOData patrulFIOData
     ) {
         return String.join(
-                " ",
+                SPACE,
                 patrulFIOData.getName(),
                 patrulFIOData.getSurname(),
                 patrulFIOData.getFatherName()
         );
     }
 
-    /*
-    генерируем сообщение с началом Транзакции
-     */
+    @SuppressWarnings(
+            value = "генерируем сообщение с началом Транзакции"
+    )
     protected final synchronized StringBuilder newStringBuilder () {
         return new StringBuilder( CassandraCommands.BEGIN_BATCH );
     }
@@ -31,18 +34,22 @@ public class StringOperations extends CollectionsInspector {
         return new StringBuilder( s );
     }
 
-    /*
-    принимает параметр для Cassandra, который является типом TEXТ,
-    и добавляет в начало и конец апострафы
-    */
+    @SuppressWarnings(
+            value = """
+                    принимает параметр для Cassandra, который является типом TEXТ,
+                        и добавляет в начало и конец апострафы
+                    """
+    )
     protected final synchronized String joinWithAstrix ( final Object value ) {
         return "$$" + value + "$$";
     }
 
-    /*
-    принимает параметр для Cassandra, который является типом TIMESTAMP,
-    и добавляет в начало и конец апострафы
-    */
+    @SuppressWarnings(
+            value = """
+                    принимает параметр для Cassandra, который является типом TIMESTAMP,
+                        и добавляет в начало и конец апострафы
+                    """
+    )
     protected final synchronized String joinWithAstrix ( final Date date ) {
         return "'" + date.toInstant() + "'";
     }

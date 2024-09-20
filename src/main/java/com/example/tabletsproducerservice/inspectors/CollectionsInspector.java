@@ -3,6 +3,7 @@ package com.example.tabletsproducerservice.inspectors;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 import java.util.*;
 
@@ -27,5 +28,12 @@ public class CollectionsInspector extends TimeInspector {
             final Map<T, U> collection
     ) {
         return collection != null && !collection.isEmpty();
+    }
+
+    protected final synchronized <T> void analyze (
+            @lombok.NonNull final Collection<T> someList,
+            @lombok.NonNull final Consumer<T> someConsumer
+    ) {
+        someList.forEach( someConsumer );
     }
 }

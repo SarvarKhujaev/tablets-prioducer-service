@@ -82,21 +82,47 @@ public class DataValidateInspector extends LogInspector {
     проверят что context внутри main класса GpsTabletsServiceApplication  инициализирован
     и среди параметров сервиса сузествует переданный параметр
     */
-    protected final synchronized <T> T checkContextOrReturnDefaultValue (
-            final String paramName,
-            final T defaultValue
+    protected static synchronized String checkContextOrReturnDefaultValue (
+            @lombok.NonNull final String paramName,
+            @lombok.NonNull final String defaultValue
     ) {
-        return this.objectIsNotNull( TabletsProducerServiceApplication.context )
-                && this.objectIsNotNull(
+        return Objects.nonNull( TabletsProducerServiceApplication.context )
+                && Objects.nonNull(
                 TabletsProducerServiceApplication
                         .context
                         .getEnvironment()
                         .getProperty( paramName )
         )
-                ? (T) TabletsProducerServiceApplication
+                ? TabletsProducerServiceApplication
                 .context
                 .getEnvironment()
                 .getProperty( paramName )
+                : defaultValue;
+    }
+
+    /*
+    получает в параметрах название параметра из файла application.yaml
+    проверят что context внутри main класса GpsTabletsServiceApplication  инициализирован
+    и среди параметров сервиса существует переданный параметр
+    */
+    @lombok.Synchronized
+    protected static synchronized int checkContextOrReturnDefaultValue (
+            @lombok.NonNull final String paramName,
+            final int defaultValue
+    ) {
+        return Objects.nonNull( TabletsProducerServiceApplication.context )
+                && Objects.nonNull(
+                TabletsProducerServiceApplication
+                        .context
+                        .getEnvironment()
+                        .getProperty( paramName )
+        )
+                ? Integer.parseInt(
+                TabletsProducerServiceApplication
+                        .context
+                        .getEnvironment()
+                        .getProperty( paramName )
+        )
                 : defaultValue;
     }
 }

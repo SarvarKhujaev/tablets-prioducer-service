@@ -7,7 +7,6 @@ import java.text.MessageFormat;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import com.example.tabletsproducerservice.kafkaDataSet.KafkaDataControl;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
@@ -22,6 +21,7 @@ import com.example.tabletsproducerservice.payload.ReqExchangeLocation;
 import com.example.tabletsproducerservice.entity.patrulDataSet.Patrul;
 import com.example.tabletsproducerservice.constants.CassandraCommands;
 import com.example.tabletsproducerservice.subscribers.CustomSubscriber;
+import com.example.tabletsproducerservice.kafkaDataSet.KafkaDataControl;
 import com.example.tabletsproducerservice.interfaces.ServiceCommonMethods;
 import com.example.tabletsproducerservice.interfaces.DatabaseCommonMethods;
 import com.example.tabletsproducerservice.database.cassandraConfigs.CassandraParamsAndOptionsStore;
@@ -51,9 +51,7 @@ public final class CassandraDataControl
 
     public void register () {
         super.convertValuesToParallelFlux(
-                this.getListOfEntities(
-                        CassandraTables.POLICE_TYPE
-                )
+                this.getListOfEntities( CassandraTables.POLICE_TYPE )
         ).subscribe( new CustomSubscriber<>( super::save ) );
     }
 

@@ -18,12 +18,12 @@ public class TokenInspector extends DataValidateInspector {
                         .parser()
                         .setSigningKey(
                                 String.join(
-                                        "",
-                                        super.checkContextOrReturnDefaultValue(
+                                        EMPTY,
+                                        checkContextOrReturnDefaultValue(
                                                 "variables.JWT_VARIABLES.ISSUER",
                                                 Errors.DATA_NOT_FOUND.translate( "en" )
                                         ),
-                                        super.checkContextOrReturnDefaultValue(
+                                        checkContextOrReturnDefaultValue(
                                                 "variables.JWT_VARIABLES.SECRET",
                                                 Errors.DATA_NOT_FOUND.translate( "en" )
                                         )
